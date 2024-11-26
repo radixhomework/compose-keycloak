@@ -28,7 +28,7 @@ services:
       DB_PASSWORD: ${KEYCLOAK_POSTGRES_PASSWORD}
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
-    command: start --proxy-headers forwarded --proxy edge --hostname ${KEYCLOAK_HOSTNAME} --hostname-admin ${KEYCLOAK_ADMIN_HOSTNAME}
+    command: start --proxy-headers forwarded --hostname ${KEYCLOAK_HOSTNAME} --hostname-admin ${KEYCLOAK_ADMIN_HOSTNAME}
     depends_on:
       postgres:
         condition: service_healthy
