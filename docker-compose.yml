@@ -1,10 +1,8 @@
-version: '3.8'
-
 name: keycloak
 
 services:
   postgres:
-    image: postgres:16
+    image: postgres:17
     environment:
       POSTGRES_USER: keycloak
       POSTGRES_PASSWORD: ${KEYCLOAK_POSTGRES_PASSWORD}
@@ -15,6 +13,7 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+    restart: always
 
   keycloak:
     image: quay.io/keycloak/keycloak:26.0
@@ -32,6 +31,7 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+    restart: always
 
 volumes:
   postgres-data:
